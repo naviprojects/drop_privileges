@@ -11,27 +11,30 @@ int main(){
   printf("\n");
 
   printf("drop_privs temp\n");
-  drop_privileges(0); 
+  int ret1 = drop_privileges(0); 
   printf("Efective user: %s\n", get_effective_user_name());
   printf("Real user: %s\n", get_user_name());
   printf("\n");
 
   printf("restore privs\n");
-  restore_privileges();
+  int ret2 = restore_privileges();
   printf("Efective user: %s\n", get_effective_user_name());
   printf("Real user: %s\n", get_user_name());
   printf("\n");
 
   printf("drop_privs definitive\n");
-  drop_privileges(1); 
+  int ret3 = drop_privileges(1); 
   printf("Efective user: %s\n", get_effective_user_name());
   printf("Real user: %s\n", get_user_name());
   printf("\n");
 
   printf("restore privs\n");
-  restore_privileges();
+  int ret4 = restore_privileges();
   printf("Efective user: %s\n", get_effective_user_name());
   printf("Real user: %s\n", get_user_name());
+  printf("\n");
+
+  printf("return values: %d, %d, %d, %d\n", ret1, ret2, ret3, ret4);
 
   return 0;
 }
