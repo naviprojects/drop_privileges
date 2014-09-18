@@ -48,16 +48,11 @@ int drop_privileges(int permanent) {
   }
  
   if (newuid != olduid) {
-#if !defined(linux)
-    seteuid(newuid);
-    if (permanent && setuid(newuid) == -1) return -1;
-#else
     if (permanent) {
         setuid(newuid);
     } else {
         seteuid(newuid);
     }
-#endif
   }
  
   /* verify that the changes were successful */
